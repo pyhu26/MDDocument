@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="markdig" Version="0.22.1" />
     <PackageReference Include="matblazor" Version="2.8.0" />
   </ItemGroup>
 

@@ -1,16 +1,28 @@
-﻿@page "/counter"
+﻿@page "/markdown"
+@page "/markdown/{FileName}"
+@page "/markdown/{DirectoryName}/{FileName}"
 
-<h1>Counter</h1>
+@inherits MDService
 
-<p>Current count: @currentCount</p>
+<div class="row">
+    @*<div class="col-6">
+            <textarea class="form-control"
+                      @bind-value="Body"
+                      @bind-value:event="oninput">
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+            </textarea>
+        </div>*@
 
-@code {
-    private int currentCount = 0;
+    <div class="col-12">
+        @if (ConvertedHtml != null)
+        {
+            @((MarkupString)ConvertedHtml)
+        }
+    </div>
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
+</div>
+
+@code{
+
+
 }
