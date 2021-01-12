@@ -1,23 +1,20 @@
-﻿
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 @inject FileService fileSvc
 
-
-<div >
+<div>
     <MbNavMenu></MbNavMenu>
 </div>
 
-<div class="main">
-    <div class="top-row px-4">
-        <button @onclick="AddFile"> Add Document </button>
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
-
-    <div class="content px-4">
-        @Body
-    </div>
+@* <div class="main"> *@
+<div class="top-row px-4">
+    <button @onclick="AddFile"> Add Document </button>
+    <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
 </div>
 
+@* </div> *@
+<div class="content px-4">
+    @Body
+</div>
 @code
 {
     async Task AddFile()

@@ -14,13 +14,13 @@
 
         </textarea>
         </div>*@
-    <div class="col-12">
+    @* <div class="col-12">
         @HttpUtility.UrlDecode(@navManager.Uri)
-    </div>
-    <div class="col-6">
+        </div>
+        <div class="col-6">
         @MarkDownText
-    </div>
-    <div class="col-6">
+        </div> *@
+    <div class="col-12">
         @if (ConvertedHtml != null)
         {
             @((MarkupString)ConvertedHtml)
@@ -31,5 +31,3 @@
 
 @code{
 }
-
-protected override void

@@ -3,13 +3,16 @@
 
 ### Jenkins 
 1. jenkins new item 생성
+   
+   ![](../../wwwroot/img/cicd-2021-01-07-11-18-40.png)
 2. 구성 > Build Trigger > webhook 설정 선택
+   
+    ![](../../wwwroot/img/cicd-2021-01-07-11-19-36.png)
 3. 구성 > Build Trigger > 고급 > secret token 발행
+   
+    ![](../../wwwroot/img/cicd-2021-01-07-11-20-20.png)
 4. Pipeline 설정
    
-    ![](../../wwwroot/img/cicd-2021-01-07-11-18-40.png)
-    ![](../../wwwroot/img/cicd-2021-01-07-11-19-36.png)
-    ![](../../wwwroot/img/cicd-2021-01-07-11-20-20.png)
     ![](../../wwwroot/img/cicd-2021-01-07-11-20-51.png)
 
 ### Gitlab
@@ -21,4 +24,5 @@
       ![](../../wwwroot/img/cicd-2021-01-07-11-31-52.png)
 
    2. Jenkins Secret token 입력
-    ![](../../wwwroot/img/cicd-2021-01-07-11-21-30.png)
+   
+      ![](../../wwwroot/img/cicd-2021-01-07-11-21-30.png)
