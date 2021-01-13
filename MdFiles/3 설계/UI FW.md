@@ -8,11 +8,10 @@
 ## 로그인 기능 설계
 > MOM 로그인 정보의 유지는 아래와 같은 이유로 Browser 단위로 정보가 저장되는 Local storage를 사용한다. (Tab을 추가하거나 브라우저를 재 시작할 경우, 로그인 필요 없음)
 - SSO 연동을 통한 로그인 정책
-- ??
 
 ### 비즈니스 로직
   - Activity Diagram
-    ::: mermaid
+    ```mermaid
     graph TB
         subgraph Service
         b1[계정존재확인]-->b2{계정 존재?}
@@ -35,7 +34,7 @@
         b3--Yes <br/> msg-loginfail--> a5
         b5--msg-loginfail-->a5
         b7--msg-loginsuccess-->a6
-    :::
+    ```
 
 
 
@@ -130,7 +129,7 @@
 
 
 - **비즈니스 로직 (Sequence Diagram)**
-    ::: mermaid
+    '''mermaid
     sequenceDiagram
         participant UI
         participant Controller
@@ -140,7 +139,7 @@
         Controller-->> Service: CRUD
         Service->>Controller: Login 처리 결과
         Controller-->>UI: LogIn 응답 메시지
-    :::
+    '''
 
 ---
  
@@ -165,7 +164,7 @@
 
 ### **2. 비 컴포넌트 영역**
 - **Activity Diagram**
-    ::: mermaid
+    ```mermaid
     graph TB
         subgraph Service
         b1[b1.언어Data 조회]-->b2[b2.언어 Data 반환]
@@ -176,7 +175,7 @@
         end
         a2--msg-changeLanguage-->b1
         b2--msg-languageData-->a3              
-    :::    
+    ```   
 
     |Activity|Lync|Description|
     |-|-|-|
@@ -249,7 +248,7 @@
 
 - ### **UI Class Design**
     
-    ::: mermaid
+    ``` mermaid
     classDiagram
         ILocalization <|.. FLLabel
         ILocalization <|.. FLGrid
@@ -273,8 +272,7 @@
         class LanguageService
         LanguageService : +FindDisplayName(stringt factoryId, string language,string key)
         LanguageService : +SaveLanguageToCookie
-
-    :::
+    ```
 
     |항목|설명|
     |-|-|
