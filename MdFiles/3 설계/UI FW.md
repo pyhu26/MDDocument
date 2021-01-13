@@ -164,7 +164,6 @@
   - [Syncfusion Localization GitHub](https://github.com/syncfusion/blazor-locale)
 
 ### **2. 비 컴포넌트 영역**
-### Logic Flow
 - **Activity Diagram**
     ::: mermaid
     graph TB
@@ -178,6 +177,17 @@
         a2--msg-changeLanguage-->b1
         b2--msg-languageData-->a3              
     :::    
+
+    |Activity|Lync|Description|
+    |-|-|-|
+    |a1.언어선택|[디자인설계](#UI-UX-Design)|- 로그인 메뉴에서 시스템 언어 선택 <br/>- Top 메뉴에서 시스템 언어 변경|
+    |a2.언어 Data 요청|[msg-changeLanguage](#msg-changeLanguage)|시스템 언어 Data 요청|
+    |b1.언어 Data 조회|[query-getLanguage](#Query-Design)|Query Service를 이용하여 시스템 언어 Data 조회|
+    |b2.언어 Data 반환|[msg-languageData](#msg-languageData)|시스템 언어 Data 반환|
+    |a3.Data 쿠키 저장]|[클래스설계](#UI-Class-Design)|- 시스템 언어 브라우저 쿠키에 저장 <br/>- UI, Message 별로 별도 저장|
+    |a4.null 번역 API로 생성|-|시스템 Data가 없는 경우, 번역 API 호출하여 대체|
+
+<br/>
 
 - **Message**
   1. common header
@@ -214,7 +224,7 @@
             "Reply" : {...}
             }
         ```
-  2. ### msg-languageData
+  3. ### msg-languageData
         ```json
         {
             "Header" : {...},
@@ -231,17 +241,13 @@
             }
         ```
 
-### UI 설계
-- **Design**   
+- ### **UI UX Design**   
   ![](../../wwwroot/img/uifw-2021-01-06-15-11-30.png)
   - 선택된 언어의 국기 표시
   - 클릭했을 경우 선택할 수 있는 언어와 해당 국기 표시
-- **Event**
-    |순번|항목|설명|Message Id|UI Logic|
-    |-|-|-|-|-|
-    |1|언어 선택|선택한 언어로 변경|[msg-change-LanguageChange](#msg-changeLanguage) |언어변경 요청|
+  - 선택 시, 선택한 언어 Data 요청 및 변경
 
-- **컴포넌트 설계**
+- ### **UI Class Design**
     
     ::: mermaid
     classDiagram
@@ -265,12 +271,45 @@
         class FLMenu
         class FLDropDown
         class LanguageService
-        LanguageService : +GetDisplayName(stringt factoryId, string language,string key)
+        LanguageService : +FindDisplayName(stringt factoryId, string language,string key)
+        LanguageService : +SaveLanguageToCookie
+
     :::
 
     |항목|설명|
     |-|-|
     |ILocalization|다국어 처리를 위한 속성 및 함수의 규약|
-    |FL[컴포넌트]|사용자 공통 컴포넌트|
-    |LanguageService|쿠키에 저장된 언어 Data에서 공통 컴포넌트 key에 해당하는 언어 data를 반환|
+    |FL[컴포넌트]|- 사용자 공통 컴포넌트 <br> - DisplayName 속성의 getter에서 GetDisplayName 함수를 호출 <br>- GetDisplayName 함수는 LanguageService를 사용|
+    |LanguageService|- 쿠키에 저장된 언어 Data에서 공통 컴포넌트 key에 해당하는 언어 data를 반환 <br/> - Service 로부터 받은 언어 Data Cookie에 저장|   
+<br/>    
+
+- ### **Query Design**
+```sql
+select 
+LANGUAGECODEID ,              //Key
+CODETYPE ,                    //UI, MESSAGE
+CODESUBTYPE ,                 //Grid, DropDown
+LANGUAGECODEDATA              //Display Name
+from FOM_MULTILANGUAGE fm
+where SITEID = @siteId
+and ISUSABLE = "Y"
+and [LANGUAGE] = @language
+```
+
+- **Data Model**   
+  언어 분류를 위한 코드의 사용은 ISO 639-1에 정의된 언어 표기를 따른다. [ISO 639-1 언어 코드 참고 링크](https://ko.wikipedia.org/wiki/ISO_639-1_%EC%BD%94%EB%93%9C_%EB%AA%A9%EB%A1%9D)
+
+    |언어|코드|
+    |-|-|
+    |한국어|ko|
+    |영어|en|
+    |중국어|ko|
+    |일본어|ja|
+    
+    |ENUMCLASSID|ENUMDEFINITIONiD|ENUMDEFINITIONNAME|ISDEFAULT|
+    |-|-|-|-|
+    |Languages|ko|Korean|Y|    
+    |Languages|en|English|N|
+    |Languages|zh|China|N|
+
 ---
