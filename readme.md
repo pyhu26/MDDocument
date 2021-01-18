@@ -26,13 +26,25 @@ Visial Code 설치 후 Extenstion Tab으로 이동해서 아래 Plugin 을 설�
 - [Markdown Syntax](https://www.markdownguide.org/basic-syntax/)
 - [Mermaid Syntax](https://mermaid-js.github.io/mermaid/#/)
 
-### 2.1. Imgae 붙여넣기
-마크다운 문서에서 Image는 별도 저장 후 링크를 통한 형태로 지원되기 때문에 일반적인 문서 편집 방식과는 차이가 있다. 
+- Imgae 붙여넣기
+  
+  마크다운 문서에서 Image는 별도 저장 후 링크를 통한 형태로 지원되기 때문에 일반적인 문서 편집 방식과는 차이가 있다. 
 
-1. 붙여넣기 할 Image 캡쳐 (on clipboard)
-1. ctrl + alt + v
-1. 경로 확인
-1. 현재 시간을 Default 파일명 환경설정에 적용한 경로로 Image가 복사됩니다.
-1. 모든 Image가 한군데에 저장되기 때문에 파일 중복을 피하기 위해 작성하시는 문서의 약어를 prefix를 넣어줍니다.   
-   ![](../wwwroot/img/dag-2021-01-13-11-05-08.png)
-   ![](../wwwroot/img/dag-2021-01-13-11-06-00.png)
+  1. 붙여넣기 할 Image 캡쳐 (on clipboard)
+  2. ctrl + alt + v
+  3. 경로 확인
+  4. 현재 시간을 Default 파일명 환경설정에 적용한 경로로 Image가 복사됩니다.
+  5. 모든 Image가 한군데에 저장되기 때문에 파일 중복을 피하기 위해 작성하시는 문서의 약어를 prefix를 넣어줍니다.   
+   
+  ![](../wwwroot/img/dag-2021-01-13-11-05-08.png)
+  
+  ![](../wwwroot/img/dag-2021-01-13-11-06-00.png)
+
+- 페이지 구분
+ 
+  건너뛰기와 구분 라인을 이용하여 페이지간 경계를 표시합니다.
+  ```md
+  <br>
+
+  ---
+  ```
