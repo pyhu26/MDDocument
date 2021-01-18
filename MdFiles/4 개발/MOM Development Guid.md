@@ -1,10 +1,16 @@
 ## MOM 
 # Development Guide
 <br>
+
 <center> R&D team </center>
+<br>
+
 <center> v.1.0.0. </center>
+<br>
+
 <center> yoon, lee </center>   
-<br><br>   
+<br><br>
+
 <center> copyright@ FormationLabs </center>   
 <br>   
 
