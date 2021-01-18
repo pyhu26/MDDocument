@@ -48,15 +48,17 @@
 
 ---
 <div id='1'/>
+
 1. ### **Develop UI**
+
     > 빠른 이해를 위해 Sample 예제를 통해 UI 개발 과정을 소개 합니다.
 
-   2. #### Design UI
+   1. #### Design UI
       - Filter Layout 배치
       - Contents Layout 배치
         - Layout 구조 및 비율 설정
       - Component 배치
-   3. #### Implement View
+   1. #### Implement View
       - razor, cs 파일 분리
       - Component ref-Id 속성 부여    
       - Event 처리
